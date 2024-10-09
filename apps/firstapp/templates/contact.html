@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li class="flash">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  
+  <form action="{{ url_for('contact_complete') }}" method="post">
+    이름 : <input type="text" name="username"><br>
+    메일주소 : <input type="text" name="email"><br>
+    문의 내용<br>
+    <textarea name="description"></textarea>
+    <br><br>
+    <input type="submit" value="전송">
+  </form>
+
+
+</body>
+</html>
